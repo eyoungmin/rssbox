@@ -35,11 +35,6 @@ post["nodes"].select { |n| !n["is_video"] }.map do |n|
 end.join("\n")
 %>
 <%= post["text"]&.linkify&.to_paragraphs&.esc %>
-<%=
-<<~EOF.esc
-  <p><a href="#{request.root_url}/#{Addressable::URI.new(query: "download=https://www.instagram.com/p/#{post["shortcode"]}/").normalize.to_s}">Download with nice filename</a></p>
-EOF
--%>
     </content>
   </entry>
 <%- end -%>
